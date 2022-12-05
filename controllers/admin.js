@@ -14,26 +14,17 @@ exports.postAddProduct = (req, res, next) => {
   const price = req.body.price;
   const description = req.body.description;
   const product = new Product(title, price, description, imageUrl);
-  // req.user MySQL
-  //   .createProduct({
-  //     title: title,
-  //     price: price,
-  //     imageUrl: imageUrl,
-  //     description: description
-  //   }) /MySQL
   product
-  .save()
-  .then(result => {
+    .save()
+    .then(result => {
       // console.log(result);
       console.log('Created Product');
       res.redirect('/admin/products');
     })
-  .catch(err => {
-    console.log(err);
-  });
+    .catch(err => {
+      console.log(err);
+    });
 };
-
-// --- MySQL ---
 
 // exports.getEditProduct = (req, res, next) => {
 //   const editMode = req.query.edit;
@@ -43,7 +34,7 @@ exports.postAddProduct = (req, res, next) => {
 //   const prodId = req.params.productId;
 //   req.user
 //     .getProducts({ where: { id: prodId } })
-//     // Product.findByPk(prodId)
+//     // Product.findById(prodId)
 //     .then(products => {
 //       const product = products[0];
 //       if (!product) {
@@ -65,7 +56,7 @@ exports.postAddProduct = (req, res, next) => {
 //   const updatedPrice = req.body.price;
 //   const updatedImageUrl = req.body.imageUrl;
 //   const updatedDesc = req.body.description;
-//   Product.findByPk(prodId)
+//   Product.findById(prodId)
 //     .then(product => {
 //       product.title = updatedTitle;
 //       product.price = updatedPrice;
@@ -95,7 +86,7 @@ exports.postAddProduct = (req, res, next) => {
 
 // exports.postDeleteProduct = (req, res, next) => {
 //   const prodId = req.body.productId;
-//   Product.findByPk(prodId)
+//   Product.findById(prodId)
 //     .then(product => {
 //       return product.destroy();
 //     })
@@ -105,5 +96,3 @@ exports.postAddProduct = (req, res, next) => {
 //     })
 //     .catch(err => console.log(err));
 // };
-
-// --- MySQL ---
